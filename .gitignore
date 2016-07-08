@@ -1,0 +1,11 @@
+build.sh
+cpp17.*
+*.out
+*.o
+callgrind.out.*
+__pycache__
+build
+perf.sh
+notes.txt
+run.sh
+*.exe
