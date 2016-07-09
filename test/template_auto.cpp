@@ -2,15 +2,10 @@
 
 #include <tuple>
 
-template<auto A>
-struct s {
-
-};
-
+template <auto A> struct s {};
 
 auto testa() {
- s<1> a;
- (void)a;
+  s<1> a;
 }
 
 int main() {

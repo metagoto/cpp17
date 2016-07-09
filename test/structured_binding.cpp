@@ -2,12 +2,14 @@
 
 #include <tuple>
 
-auto testa() {
-
-  auto [a, b] = std::make_tuple(1, 1.f);
-
+auto f() {
+  return std::make_tuple(1, 1.f);
 }
 
+auto testa() {
+  auto x = f();
+  auto[a, b] = f();
+}
 
 int main() {
 

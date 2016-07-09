@@ -26,6 +26,7 @@ cmake -DCPP17_CXX_STD=$CXX_STD -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
   -DCMAKE_CXX_FLAGS="${CXX_FLAGS}" -DCMAKE_EXE_LINKER_FLAGS="${CXX_LINKER_FLAGS}" \
   ..
 make
-make test ARGS="-V"
+make test
+#ARGS="-V"
 cd ..
 
