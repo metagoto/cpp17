@@ -2,7 +2,7 @@
 
 auto testa() {
   if (int i = 1; i) {
-    CHECK(true);
+    CHECK(++i == 2);
   }
 }
 

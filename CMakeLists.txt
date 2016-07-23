@@ -5,13 +5,8 @@ project(CPP17 CXX)
 
 if(CPP17_CXX_STD)
 else()
-  set(CPP17_CXX_STD 1y)
+  set(CPP17_CXX_STD 1z)
 endif()
-
-#if(CPP17_SFML_DIR)
-#  include_directories(${CPP17_SFML_DIR}/include)
-#  link_directories(${CPP17_SFML_DIR}/lib)
-#endif()
 
 enable_testing()
 
@@ -43,6 +38,18 @@ macro(mk_test NAME)
   add_executable(${NAME} ${NAME}.cpp)
   add_test(${NAME} ${NAME})
 endmacro()
+
+macro(compile_fail NAME)
+  add_executable(${NAME} ${NAME}.cpp)
+  set_target_properties(${NAME} PROPERTIES
+                        EXCLUDE_FROM_ALL TRUE
+                        EXCLUDE_FROM_DEFAULT_BUILD TRUE)
+  add_test(NAME ${NAME}
+           COMMAND ${CMAKE_COMMAND} --build . --target ${NAME} --config $<CONFIGURATION>
+           WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+  set_tests_properties(${NAME} PROPERTIES WILL_FAIL TRUE)
+endmacro()
+
 
 add_subdirectory(test)
 

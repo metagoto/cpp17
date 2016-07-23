@@ -8,7 +8,9 @@ auto f() {
 
 auto testa() {
   auto x = f();
-  auto[a, b] = f();
+  auto [a, b] = f();
+
+  CHECK(a == 1);
 }
 
 int main() {
