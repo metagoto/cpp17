@@ -2,18 +2,21 @@
 
 #include <tuple>
 
-auto f() {
+auto f()
+{
   return std::make_tuple(1, 1.f);
 }
 
-auto testa() {
+auto testa()
+{
   auto x = f();
   auto [a, b] = f();
 
   CHECK(a == 1);
 }
 
-int main() {
+int main()
+{
 
   testa();
 

@@ -5,13 +5,14 @@
 
 using namespace std;
 
-auto test() {
+auto test()
+{
 
   auto a = make_tuple(1, 2.0);
-
 }
 
-int main() {
+int main()
+{
 
   test();
 

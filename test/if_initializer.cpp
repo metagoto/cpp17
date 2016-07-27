@@ -1,12 +1,14 @@
 #include "./simple_test.hpp"
 
-auto testa() {
+auto testa()
+{
   if (int i = 1; i) {
     CHECK(++i == 2);
   }
 }
 
-int main() {
+int main()
+{
 
   testa();
 

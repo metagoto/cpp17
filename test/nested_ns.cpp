@@ -1,16 +1,24 @@
 #include "./simple_test.hpp"
 
-namespace a {}
+namespace a {
+}
 
 namespace a::b {
-  auto test() { CHECK(true); }
+auto test()
+{
+  CHECK(true);
+}
 }
 
 namespace c::d {
-  auto test() { CHECK(true); }
+auto test()
+{
+  CHECK(true);
+}
 }
 
-int main() {
+int main()
+{
 
   a::b::test();
   c::d::test();
