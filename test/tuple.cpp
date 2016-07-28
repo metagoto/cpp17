@@ -37,7 +37,7 @@ auto test()
   print(a);
 }
 
-/////////
+/////////////
 
 template <typename A, typename B, size_t... I, size_t... J>
 auto zip_impl(A&& a, B&& b, index_sequence<I...>, index_sequence<J...>)
@@ -52,7 +52,7 @@ auto zip(A&& a, B&& b)
   return zip_impl(a, b, index_for_tuple<A>{}, index_for_tuple<B>{});
 }
 
-auto test2()
+auto test_zip()
 {
   auto a = make_tuple(1, 2, 3);
   auto b = make_tuple('a', 'b', 'c');
@@ -63,11 +63,46 @@ auto test2()
   CHECK(c == d);
 }
 
+/////////////
+
+template <typename T, typename F, size_t... I>
+auto tuple_foreach_impl(T&& t, F&& f, index_sequence<I...>)
+{
+  (f(get<I>(t)), ...);
+}
+
+template <typename T, typename F>
+auto tuple_foreach(T&& t, F&& f)
+{
+  tuple_foreach_impl(std::forward<T>(t), std::forward<F>(f), index_for_tuple<T>{});
+}
+
+auto test_foreach()
+{
+  auto a = make_tuple(1, 'a', 2.1, "test");
+  tuple_foreach(a, [](auto a) { cout << a << ", "; });
+  cout << "\n";
+}
+
+/////////////
+
+auto test_apply()
+{
+  auto a = make_tuple(1, 'a', 2.1, "test");
+  apply([](int i, char c, double d, char const* s) { cout << i << c << d << s << "\n"; }, a);
+  apply([](auto... a) { (cout << ... << a); }, a);
+  cout << "\n";
+}
+
+/////////////
+
 int main()
 {
 
   test();
-  test2();
+  test_zip();
+  test_foreach();
+  test_apply();
 
   return ::test_result();
 }
